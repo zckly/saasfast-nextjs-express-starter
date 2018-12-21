@@ -1,0 +1,362 @@
+@media screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) {
+  html,
+  body {
+    margin: 0;
+  }
+
+  #app {
+
+    /* Give app full page to work with */
+    height: 100vh;
+    font-family: 'Work Sans', sans-serif;
+  }
+
+  .page-wrap {
+    /* Prevent sidebar from showing a scrollbar on page */
+    overflow: auto;
+  }
+
+  /* Individual item */
+  .bm-item {
+    display: inline-block;
+
+    /* Our sidebar item styling */
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+    transition: color 0.2s;
+  }
+
+  /* Change color on hover */
+  .bm-item:hover {
+    color: white;
+  }
+
+  /* The rest copied directly from react-burger-menu docs */
+
+  /* Position and sizing of burger button */
+  .bm-burger-button {
+    position: fixed;
+    width: 30px;
+    height: 24px;
+    left: 10vw;
+    top: 5vh;
+  }
+
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #373a47;
+  }
+
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #bdc3c7;
+  }
+
+  /* General sidebar styles */
+  .bm-menu {
+    background: #ffffff;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+  }
+
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .header-component {
+  	font-family: 'Work Sans', sans-serif;
+  }
+  .logo {
+  	text-align: center;
+  	font-family: 'Space Mono', monospace;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: normal;
+  	font-size: 1.7em;
+  }
+
+  .links {
+    margin-left: 1;
+    margin-top: 1;
+  }
+  .link {
+    width: 2vw;
+    height: 2vh;
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 1em;
+  }
+
+  .home-page {
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 1.7em;
+    text-align: center;
+    margin-left: 0;
+    padding: 1 1 1 1;
+  }
+
+  .text-section {
+    margin-top: 7vh;
+  }
+  .text-block {
+    margin-top: 2vh;
+  }
+  .go {
+    margin-top: 5vh;
+  }
+  .index-button {
+
+  }
+  .main-button {
+      margin-left: 1vw;
+      margin-top: 1vh;
+      padding: 3vh 3vw 3vh 3vw;
+      background: #FFFFFF;
+      width: 40vw;
+      font-family: 'Work Sans', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      font-size: 1em;
+      color: #27be95;
+  }
+
+  .input-field {
+    width: 75vw;
+    height: 8vh;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+    padding-left: 4vw;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    font-size: 1.4em;
+  }
+  .form {
+    margin-top: 5vh;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+  }
+
+  .form-text {
+    margin-top: 6vh;
+    font-size: 35px;
+  }
+  .checkbox {
+    width: 7vw;
+    height: 7vh;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+  }
+  [type="checkbox"]
+  {
+      vertical-align:middle;
+  }
+  label[for="checkid"] {
+    font-size: .9em;
+  }
+  /*button*/
+  .button {
+    background: #111;
+    touch-callout: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    display: inline-block;
+    border: .2em solid;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 0.6;
+    color: #FFF;
+  }
+  .button__text {
+    display: block;
+    padding: 1em 2em;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .button__text:before {
+    content: attr(title);
+  }
+  .button__text--bis {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: translateX(-1em);
+            transform: translateX(-1em);
+    opacity: 0;
+  }
+  .button__mask {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    -webkit-transform: translateX(-100%) rotate(45deg);
+            transform: translateX(-100%) rotate(45deg);
+    transition: all 0.3s;
+  }
+
+  .button:hover {
+    opacity: 1;
+  }
+  .button:hover .button__text {
+    -webkit-animation: fx-text .3s ease-out;
+            animation: fx-text .3s ease-out;
+  }
+  .button:hover .button__text--bis {
+    -webkit-animation: fx-text-bis .3s ease-out;
+            animation: fx-text-bis .3s ease-out;
+  }
+  .button:hover .button__mask {
+    -webkit-animation: fx-mask .3s ease-out;
+            animation: fx-mask .3s ease-out;
+  }
+
+  .button:active {
+    opacity: 1;
+    background: white;
+    color: inherit;
+  }
+
+  @-webkit-keyframes fx-mask {
+    0% {
+      -webkit-transform: translateX(-100%) rotate(45deg);
+              transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+      -webkit-transform: translateX(100%) rotate(45deg);
+              transform: translateX(100%) rotate(45deg);
+    }
+  }
+
+  @keyframes fx-mask {
+    0% {
+      -webkit-transform: translateX(-100%) rotate(45deg);
+              transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+      -webkit-transform: translateX(100%) rotate(45deg);
+              transform: translateX(100%) rotate(45deg);
+    }
+  }
+  @-webkit-keyframes fx-text {
+    0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateX(1em);
+              transform: translateX(1em);
+      opacity: 0;
+    }
+  }
+  @keyframes fx-text {
+    0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateX(1em);
+              transform: translateX(1em);
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes fx-text-bis {
+    0% {
+      -webkit-transform: translateX(-1em);
+              transform: translateX(-1em);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fx-text-bis {
+    0% {
+      -webkit-transform: translateX(-1em);
+              transform: translateX(-1em);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  /*end button*/
+
+  .marginBottomFive {
+    margin-bottom: 5vh;
+  }
+  /*dashboard*/
+  .dashboard-page {
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 1em;
+    text-align: center;
+    margin-left: 0;
+  }
+  #newQuery {
+    margin-bottom: 2vh;
+    font-size: .7em;
+  }
+  .newQueryButton {
+    margin-bottom: 2vh;
+  }
+  .table {
+    width: 80vw;
+    margin: 0 auto;
+  }
+  .checkout-page {
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 1.2em;
+    text-align: center;
+    margin-left: 0;
+  }
+}

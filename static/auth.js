@@ -1,0 +1,53 @@
+import Cookie from 'js-cookie';
+import jwt from 'jsonwebtoken';
+import fetch from 'isomorphic-unfetch';
+import * as settings from '../settings';
+
+async function getJWK() {
+  const res = await fetch(`https://${settings.domain}/.well-known/jwks.json`);
+  const jwk = await res.json();
+  return jwk;
+}
+
+function saveToken(token) {
+  Cookie.set('user', token);
+};
+
+function deleteToken() {
+  Cookie.remove('user');
+};
+
+async function verifyToken(token) {
+  if (token) {
+    return true
+  }
+  return false
+}
+
+async function getTokenForBrowser() {
+  return Cookie.getJSON('user');
+}
+
+async function getTokenForServer(req) {
+  if (req.headers.cookie) {
+    const jwtFromCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('user='));
+    if (!jwtFromCookie) {
+      return undefined;
+    }
+    const token = jwtFromCookie.split('=')[1];
+    const validToken = await verifyToken(token);
+    if (validToken) {
+      return token;
+    } else {
+      return undefined;
+    }
+  }
+}
+
+export {
+  saveToken,
+  deleteToken,
+  getTokenForBrowser,
+  getTokenForServer,
+  verifyToken
+};
