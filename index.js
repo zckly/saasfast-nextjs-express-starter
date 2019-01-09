@@ -2,9 +2,13 @@ const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
+const ObjectId = require('mongodb').ObjectID;
 const auth = require("./controllers/AuthController.js");
 const User = require('./models/user-model');
 const Query = require('./models/query-model');
+const EmailAttempts = require('./models/email-attempts-model');
+var moment = require('moment');
+
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 const port = 3000
@@ -69,42 +73,42 @@ app.prepare()
     })
     
   })
-  //route for getting dashboard
-  server.post('/fetch_dashboard', (req, res) => {
+  function fetchDashboard (req, res) {
     //1. find in Query using req.body id
     const {user} = req.body
-    console.log('user', decodeURI(user).replace(/"/g, ''))
-    Query.find({userID: decodeURI(user).replace(/"/g, '')})
+    user_id = decodeURI(user).replace(/"/g, '')
+    Query.find({userID: user_id})
     .then((docs) => {
-      console.log('dashboard_fetch', docs)
       res.send({success:true, data: docs})
     })
     .catch((err) => {
       console.log('err', err)
       res.send({success: false, data: err})
     })
-  })
-  server.post('/users/signup-and-create-alert', (req, res) => {
-  	//create user account
-    var newUser = new User({
-        email: req.body.email,
-        password: req.body.password
-    });
-    newUser.save((err,doc) => {
-      if (err) throw err;
-      //if successful, create the user's free query
-      var newQuery = new Query({
-        userID: doc.id,
-        searchQuery: req.body.searchQuery,
-        sites: ['all']
-      })
-      newQuery.save((err2, doc2) => {
-        if (err2) throw err2;
-        //invoke lambda for initial scrape
-        res.send(doc)
-      })
+  }
+  //route for getting dashboard
+  server.post('/fetch_dashboard', fetchDashboard)
+  server.post('/queries/activate', (req, res) => {
+    const {query_id} = req.body
+    Query.findByIdAndUpdate(query_id, {active: true}, {new: true}, function(err, doc) {
+      if (err) {
+        res.send({success: false, data: err})
+      } else {
+        return fetchDashboard(req, res)
+      }
     })
   })
+  server.post('/queries/deactivate', (req, res) => {
+    const {query_id} = req.body
+    Query.findByIdAndUpdate(query_id, {active: false}, {new: true}, function(err, doc) {
+      if (err) {
+        res.send({success: false, data: err})
+      } else {
+        return fetchDashboard(req, res)
+      }
+    })
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })

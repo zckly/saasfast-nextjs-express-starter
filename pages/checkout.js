@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types';
 import SecureTemplate from '../static/secure-template';
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import {withRouter} from 'next/router'
 import Router from 'next/router'
 import {domain} from '../settings';
 import { saveToken } from '../static/auth.js';
+function titleCase(str) {
+  return str.toLowerCase().split(' ').map(function(word) {
+    return word.replace(word[0], word[0].toUpperCase());
+  }).join(' ');
+}
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -44,16 +48,16 @@ class Checkout extends React.Component {
 
     return (
       <div className="checkout-page">
-        <div>We will monitor</div>
+        <h2>We will monitor</h2>
         <br />
-        <div>Heroine</div>
-        <div>Grailed</div>
-        <div>Ebay</div>
-        <div>Yahoo Auctions</div>
-        <div>Rakuten</div>
+        <h5>Heroine</h5>
+        <h5>Grailed</h5>
+        <h5>Ebay</h5>
+        <h5>Yahoo Auctions</h5>
+        <h5>Rakuten</h5>
         <br/>
         <div>
-        for "{searchQuery}"
+        for "{titleCase(searchQuery)}"
         </div>
         <br/>
         <div>
@@ -66,8 +70,8 @@ class Checkout extends React.Component {
         <br/>
         <div className="button" onClick={this.submitNewQuery}>
           <span className="button__mask" />
-          <span className="button__text">yeet</span>
-          <span className="button__text button__text--bis">yeet</span>
+          <span className="button__text">Yes</span>
+          <span className="button__text button__text--bis">Yes</span>
         </div>
       </div>
     )

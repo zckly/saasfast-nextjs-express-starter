@@ -6,8 +6,7 @@ var userController = {};
 
 // Post registration
 userController.doRegister = function(req, res, next) {
-  console.log('req.body', req.body)
-  User.register(new User({ email : req.body.email, username: req.body.email}), req.body.password, function(err, user) {
+  User.register(new User({ username: req.body.username, email : req.body.username}), req.body.password, function(err, user) {
     if (err) {
       console.log('err saving user', err)
       return res.send({status: 'error', data: user})

@@ -6,7 +6,21 @@ var QuerySchema = new Schema({
     searchQuery: { type: String, required: true },
     active: { type: Boolean, default: true },
     sites: [ String ],
-    initialScrapeCompleted: {type: Boolean, default: false}
+    recent_results: [ {
+    	"name": String,
+      "listing_link": String,
+      "listing_age": String,
+      "image_link": String,
+      "original_price": Number,
+      "new_price": Number,
+      "designer": String,
+      "size": String,
+      "source": String,
+      "found_time": Date
+    } ],
+    initialGrailedScrapeCompleted: {type: Boolean, default: false},
+    initialEbayScrapeCompleted: {type: Boolean, default: false},
+    initialFromJPScrapeCompleted: {type: Boolean, default: false}
 });
 
 

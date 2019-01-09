@@ -1,5 +1,5 @@
 @media screen 
-  and (min-device-width: 375px) 
+  and (min-device-width: 300px) 
   and (max-device-width: 812px) 
   and (-webkit-min-device-pixel-ratio: 3) {
   html,
@@ -14,7 +14,7 @@
     font-family: 'Work Sans', sans-serif;
   }
 
-  .page-wrap {
+  #page-wrap {
     /* Prevent sidebar from showing a scrollbar on page */
     overflow: auto;
   }
@@ -85,6 +85,9 @@
   }
   .header-component {
   	font-family: 'Work Sans', sans-serif;
+    background-color: #ffffff;
+    width: 100%;
+    height: 10vh;
   }
   .logo {
   	text-align: center;
@@ -93,6 +96,9 @@
   	font-weight: 700;
   	line-height: normal;
   	font-size: 1.7em;
+  }
+  .logo-link {
+    color:black;
   }
 
   .links {
@@ -117,20 +123,24 @@
     font-size: 1.7em;
     text-align: center;
     margin-left: 0;
-    padding: 1 1 1 1;
+  }
+  .home-text {
+    margin-right: 0vw;
   }
 
   .text-section {
-    margin-top: 7vh;
+    margin-top: 15vh;
   }
   .text-block {
     margin-top: 2vh;
+    padding-left: 2vw;
   }
   .go {
     margin-top: 5vh;
   }
   .index-button {
-
+    font-size: 1em;
+    margin-left: 0!important;
   }
   .main-button {
       margin-left: 1vw;
@@ -186,7 +196,7 @@
   }
   /*button*/
   .button {
-    background: #111;
+    background: #FFFFFF;
     touch-callout: none;
     -webkit-user-select: none;
        -moz-user-select: none;
@@ -198,14 +208,18 @@
     cursor: pointer;
     overflow: hidden;
     opacity: 0.6;
-    color: #FFF;
+    color: black;
+  }
+  #query_button {
+    padding: 1.5em 6.5em;
   }
   .button__text {
     display: block;
-    padding: 1em 2em;
+    padding: .7em 3em;
     text-transform: uppercase;
     font-weight: bold;
   }
+
   .button__text:before {
     content: attr(title);
   }
@@ -329,6 +343,9 @@
   .marginBottomFive {
     margin-bottom: 5vh;
   }
+  .signup-page {
+    margin-top: 14vh;
+  }
   /*dashboard*/
   .dashboard-page {
     font-family: 'Work Sans', sans-serif;
@@ -341,7 +358,7 @@
   }
   #newQuery {
     margin-bottom: 2vh;
-    font-size: .7em;
+    font-size: .9em;
   }
   .newQueryButton {
     margin-bottom: 2vh;
@@ -359,4 +376,5 @@
     text-align: center;
     margin-left: 0;
   }
+
 }

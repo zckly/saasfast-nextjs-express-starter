@@ -2,6 +2,8 @@ import Router from 'next/router'
 import Link from 'next/link';
 import template from '../static/template';
 import {domain} from '../settings';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 class Signup extends React.Component {
 	constructor(props) {
 		super(props)
@@ -22,6 +24,15 @@ class Signup extends React.Component {
 		//Send form data to server
 		//Copy of state
 		const stateCopy = {...this.state}
+		if (~stateCopy.username.length || ~stateCopy.password.length || ~stateCopy.v_password.length ) {
+			Swal({
+			  title: 'Darn',
+			  text: 'Please fill out all the fields',
+			  type: 'error',
+			  confirmButtonText: 'Cool'
+			})
+		}
+
 		if (stateCopy.password === stateCopy.v_password) {
 			fetch(domain + '/register', {
 			    headers: {
@@ -32,10 +43,22 @@ class Signup extends React.Component {
 			    body: JSON.stringify(stateCopy)
 			})
 			.then(response => response.json())
-			.then((json) => console.log('json', json))
-			.then(() => Router.push({pathname: '/login'}))
+			.then((json) => json['success'] ? 
+					Router.push({pathname: '/thankyou'}) : 
+					Swal({
+					  title: 'Shit',
+					  text: json['message'],
+					  type: 'error',
+					  confirmButtonText: 'Cool'
+					})
+				)
 		} else {
-			console.log('passwords dont match')
+			Swal({
+			  title: 'Darn',
+			  text: 'Passwords dont match',
+			  type: 'error',
+			  confirmButtonText: 'Cool'
+			})
 		}
 		
 	}
