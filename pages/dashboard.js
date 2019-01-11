@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import SecureTemplate from '../static/secure-template';
 import Router from 'next/router'
 import Link from 'next/link'
-import {domain} from '../settings';
 import { Grid, Card, Button, Image, Modal } from 'semantic-ui-react'
 function titleCase(str) {
   return str.toLowerCase().split(' ').map(function(word) {
@@ -65,7 +64,7 @@ class Dashboard extends React.Component {
   close = () => this.setState({ open: false })
   turnOnAlert (id) {
     console.log(id)
-    fetch(domain + '/queries/activate', {
+    fetch(origin + '/queries/activate', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -85,7 +84,7 @@ class Dashboard extends React.Component {
   }
   turnOffAlert (id) {
     console.log(id)
-    fetch(domain + '/queries/deactivate', {
+    fetch(origin + '/queries/deactivate', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

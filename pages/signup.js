@@ -1,7 +1,6 @@
 import Router from 'next/router'
 import Link from 'next/link';
 import template from '../static/template';
-import {domain} from '../settings';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 class Signup extends React.Component {

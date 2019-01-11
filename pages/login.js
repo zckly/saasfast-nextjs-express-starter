@@ -2,7 +2,6 @@ import Router from 'next/router'
 import Link from 'next/link';
 import template from '../static/template';
 import { saveToken } from '../static/auth';
-import {domain} from '../settings';
 import Swal from 'sweetalert2'
 
 class Login extends React.Component {
