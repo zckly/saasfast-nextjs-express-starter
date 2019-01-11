@@ -25,7 +25,7 @@ class Checkout extends React.Component {
     const stateCopy = {...this.state}
     stateCopy['user'] = this.props.loggedInUser
     stateCopy['newQuery'] = this.props.router.query.q
-    fetch(domain + '/new_query', {
+    fetch(this.props.origin + '/new_query', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

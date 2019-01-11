@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
   }
   componentDidMount() {
     if (this.props.isLoggedIn) {
-      fetch(domain + '/fetch_dashboard', {
+      fetch(this.props.origin + '/fetch_dashboard', {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

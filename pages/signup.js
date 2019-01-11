@@ -34,7 +34,7 @@ class Signup extends React.Component {
 		}
 
 		if (stateCopy.password === stateCopy.v_password) {
-			fetch(domain + '/register', {
+			fetch(this.props.origin + '/register', {
 			    headers: {
 			      'Accept': 'application/json',
 			      'Content-Type': 'application/json'
