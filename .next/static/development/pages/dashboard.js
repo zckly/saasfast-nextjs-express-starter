@@ -90603,7 +90603,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           var _getInitialProps = _asyncToGenerator(
           /*#__PURE__*/
           _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-            var req, loggedInUser, pageProperties;
+            var req, loggedInUser, origin, pageProperties;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
@@ -90629,31 +90629,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   case 10:
                     loggedInUser = _context.t0;
-                    _context.next = 13;
+                    origin = req && req.headers && req.headers.host ? req.protocol + '://' + req.headers.host : window.location.origin;
+                    _context.next = 14;
                     return Page.getInitialProps;
 
-                  case 13:
+                  case 14:
                     _context.t1 = _context.sent;
 
                     if (!_context.t1) {
-                      _context.next = 18;
+                      _context.next = 19;
                       break;
                     }
 
-                    _context.next = 17;
+                    _context.next = 18;
                     return Page.getInitialProps(req);
 
-                  case 17:
+                  case 18:
                     _context.t1 = _context.sent;
 
-                  case 18:
+                  case 19:
                     pageProperties = _context.t1;
                     return _context.abrupt("return", _objectSpread({}, pageProperties, {
                       loggedInUser: loggedInUser,
+                      origin: origin,
                       isLoggedIn: !!loggedInUser
                     }));
 
-                  case 20:
+                  case 21:
                   case "end":
                     return _context.stop();
                 }

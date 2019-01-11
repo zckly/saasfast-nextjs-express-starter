@@ -32,6 +32,8 @@ app.prepare()
       resave: false,
       saveUninitialized: false
   }));
+
+  server.enable('trust proxy');
   server.use(passport.initialize());
   server.use(passport.session());
   passport.use(new LocalStrategy(User.authenticate()));

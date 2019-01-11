@@ -27,7 +27,7 @@ class Login extends React.Component {
 		//Copy of state
 		const stateCopy = {...this.state}
 		if (stateCopy.username.length && stateCopy.password.length) {
-			fetch(domain + '/login', {
+			fetch(this.props.origin + '/login', {
 			    headers: {
 			      'Accept': 'application/json',
 			      'Content-Type': 'application/json'
