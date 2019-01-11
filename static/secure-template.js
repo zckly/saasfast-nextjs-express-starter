@@ -13,7 +13,7 @@ export default Page => class Template extends React.Component {
   
   static async getInitialProps({ req }) {
     const loggedInUser = process.browser ? await getTokenForBrowser() : await getTokenForServer(req);
-    const origin = req && req.headers && req.headers.host ? req.protocol + '://'+req.headers.host : window.location.origin
+    const origin = req && req.headers && req.headers.host && req.protocol ? req.protocol + '://'+req.headers.host : window.location.origin
     const pageProperties = await Page.getInitialProps && await Page.getInitialProps(req);
     return {
       ...pageProperties,
