@@ -125,13 +125,11 @@ body {
   line-height: normal;
   font-size: 1.7em;
   margin-left: 10vw;
+  margin-right: 10vw;
 }
 
 .text-section {
   margin-top: 20vh;
-}
-.home-text {
-  margin-right: 10vw;
 }
 .text-block {
   margin-top: 2vh;
@@ -160,8 +158,8 @@ body {
 }
 
 .input-field {
-  width: 75vw;
-  height: 8vh;
+  width: 50vw;
+  height: 6vh;
   margin-top: 3vh;
   margin-bottom: 2vh;
   padding-left: 4vw;

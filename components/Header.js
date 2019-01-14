@@ -25,7 +25,7 @@ class Header extends React.Component {
             <Link href='/'><a className='logo-link' >heatseeker</a></Link>
           </div>
           <div>
-            <Menu isOpen={ menuOpen } pageWrapId={ "page-wrap" } >
+            <Menu noOverlay isOpen={ menuOpen } pageWrapId={ "page-wrap" } >
             { isLoggedIn ? 
               ( 
               <div>

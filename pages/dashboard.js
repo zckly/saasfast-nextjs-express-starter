@@ -2,13 +2,19 @@ import PropTypes from 'prop-types';
 import SecureTemplate from '../static/secure-template';
 import Router from 'next/router'
 import Link from 'next/link'
+import moment from 'moment'
 import { Grid, Card, Button, Image, Modal } from 'semantic-ui-react'
 function titleCase(str) {
   return str.toLowerCase().split(' ').map(function(word) {
     return word.replace(word[0], word[0].toUpperCase());
   }).join(' ');
 }
-
+function truncateString(str, len) {
+  if (str.length > len)
+    return str.substring(0,len)+'...';
+ else
+    return str;
+}
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
@@ -55,7 +61,7 @@ class Dashboard extends React.Component {
   submitNewQuery (evt) {
     evt.preventDefault()
     if (this.state.newQuery.length) {
-      Router.push(`/checkout?q=${this.state.newQuery}`, `/checkout/${this.state.newQuery}`)
+      Router.push(`/checkout?q=${encodeURIComponent(this.state.newQuery)}`, `/checkout/${encodeURIComponent(this.state.newQuery)}`)
     } else {
 
     }
@@ -114,17 +120,19 @@ class Dashboard extends React.Component {
             <Card.Content>
               <Image size='mini' floated='left' src={x.recent_results.length ? x.recent_results[0].image_link : 'http://react.semantic-ui.com/images/wireframe/image.png'} />
               <Card.Header>{titleCase(x.searchQuery)}</Card.Header>
-              <Card.Meta>Last item found</Card.Meta>
               <Card.Description>
-                <h5>{x.recent_results.length ? x.recent_results[0]['name'] : ''}</h5>
+                <h5>{x.recent_results.length ? truncateString(x.recent_results[0]['name'], 42) : ''}</h5>
                 {x.recent_results.length ? (
                   <div>
                     <h4>
                     {~x.recent_results[0].new_price ? '$' + x.recent_results[0].new_price : '$' + x.recent_results[0].original_price}
                     </h4>
-                    <h5>
-                    {'Found on ' + x.recent_results[0].source}
-                    </h5>
+                    <p>
+                    {'Found on ' + x.recent_results[0].source + ' at'}
+                    </p>
+                    <p>
+                    {moment(x.recent_results[0].found_time).format("dddd, MMMM Do, h:mm a")}
+                    </p>
                   </div>) : (<div><h3>No searches yet!</h3><br/><br/><br/><br/><br/>
                 </div>)}
             </Card.Description>

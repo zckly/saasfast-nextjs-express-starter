@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -178,6 +178,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "logo-link"
       }, "heatseeker"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_burger_menu__WEBPACK_IMPORTED_MODULE_3__["push"], {
+        noOverlay: true,
         isOpen: menuOpen,
         pageWrapId: "page-wrap"
       }, isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
@@ -266,7 +267,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "next/link");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../settings */ "./settings.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__);
 
@@ -302,6 +304,10 @@ function titleCase(str) {
   return str.toLowerCase().split(' ').map(function (word) {
     return word.replace(word[0], word[0].toUpperCase());
   }).join(' ');
+}
+
+function truncateString(str, len) {
+  if (str.length > len) return str.substring(0, len) + '...';else return str;
 }
 
 var Dashboard =
@@ -352,7 +358,7 @@ function (_React$Component) {
       var _this2 = this;
 
       if (this.props.isLoggedIn) {
-        fetch(_settings__WEBPACK_IMPORTED_MODULE_5__["domain"] + '/fetch_dashboard', {
+        fetch(this.props.origin + '/fetch_dashboard', {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -387,7 +393,7 @@ function (_React$Component) {
       evt.preventDefault();
 
       if (this.state.newQuery.length) {
-        next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push("/checkout?q=".concat(this.state.newQuery), "/checkout/".concat(this.state.newQuery));
+        next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push("/checkout?q=".concat(encodeURIComponent(this.state.newQuery)), "/checkout/".concat(encodeURIComponent(this.state.newQuery)));
       } else {}
     }
   }, {
@@ -396,7 +402,7 @@ function (_React$Component) {
       var _this3 = this;
 
       console.log(id);
-      fetch(_settings__WEBPACK_IMPORTED_MODULE_5__["domain"] + '/queries/activate', {
+      fetch(origin + '/queries/activate', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -429,7 +435,7 @@ function (_React$Component) {
       var _this4 = this;
 
       console.log(id);
-      fetch(_settings__WEBPACK_IMPORTED_MODULE_5__["domain"] + '/queries/deactivate', {
+      fetch(origin + '/queries/deactivate', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -475,7 +481,7 @@ function (_React$Component) {
             size: "mini",
             floated: "left",
             src: x.recent_results.length ? x.recent_results[0].image_link : 'http://react.semantic-ui.com/images/wireframe/image.png'
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Header, null, titleCase(x.searchQuery)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Meta, null, "Last item found"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Description, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, x.recent_results.length ? x.recent_results[0]['name'] : ''), x.recent_results.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, ~x.recent_results[0].new_price ? '$' + x.recent_results[0].new_price : '$' + x.recent_results[0].original_price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, 'Found on ' + x.recent_results[0].source)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No searches yet!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)))))));
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Header, null, titleCase(x.searchQuery)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Description, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, x.recent_results.length ? truncateString(x.recent_results[0]['name'], 42) : ''), x.recent_results.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, ~x.recent_results[0].new_price ? '$' + x.recent_results[0].new_price : '$' + x.recent_results[0].original_price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, 'Found on ' + x.recent_results[0].source + ' at'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_5___default()(x.recent_results[0].found_time).format("dddd, MMMM Do, h:mm a"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No searches yet!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)))))));
         })(this, i);
       }
 
@@ -604,7 +610,9 @@ function _getJWK() {
 }
 
 function saveToken(token) {
-  js_cookie__WEBPACK_IMPORTED_MODULE_1___default.a.set('user', token);
+  js_cookie__WEBPACK_IMPORTED_MODULE_1___default.a.set('user', token, {
+    expires: 21
+  });
 }
 
 ;
@@ -813,7 +821,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           var _getInitialProps = _asyncToGenerator(
           /*#__PURE__*/
           _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-            var req, loggedInUser, origin, pageProperties;
+            var req, loggedInUser, protocol, origin, pageProperties;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
@@ -842,25 +850,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   case 10:
                     loggedInUser = _context.t0;
-                    origin = req && req.headers && req.headers.host ? req.protocol + '://' + req.headers.host : window.location.origin;
-                    _context.next = 14;
+                    protocol = req && req.secure ? 'https' : 'http';
+                    origin = req && req.headers && req.headers.host ? protocol + '://' + req.headers.host : window.location.origin;
+                    _context.next = 15;
                     return Page.getInitialProps;
 
-                  case 14:
+                  case 15:
                     _context.t1 = _context.sent;
 
                     if (!_context.t1) {
-                      _context.next = 19;
+                      _context.next = 20;
                       break;
                     }
 
-                    _context.next = 18;
+                    _context.next = 19;
                     return Page.getInitialProps(req);
 
-                  case 18:
+                  case 19:
                     _context.t1 = _context.sent;
 
-                  case 19:
+                  case 20:
                     pageProperties = _context.t1;
                     return _context.abrupt("return", _objectSpread({}, pageProperties, {
                       loggedInUser: loggedInUser,
@@ -868,7 +877,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                       isLoggedIn: !!loggedInUser
                     }));
 
-                  case 21:
+                  case 22:
                   case "end":
                     return _context.stop();
                 }
@@ -1003,7 +1012,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!**********************************!*\
   !*** multi ./pages/dashboard.js ***!
   \**********************************/
@@ -1056,6 +1065,17 @@ module.exports = require("js-cookie");
 /***/ (function(module, exports) {
 
 module.exports = require("jsonwebtoken");
+
+/***/ }),
+
+/***/ "moment":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
 
 /***/ }),
 

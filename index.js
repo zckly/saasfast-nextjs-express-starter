@@ -44,11 +44,15 @@ app.prepare()
   // parse application/json
   server.use(bodyParser.json())
 
+  function usernameToLowerCase(req, res, next){
+      req.body.username = req.body.username.toLowerCase();
+      next();
+  }
   // route for register action
-  server.post('/register', auth.doRegister);
+  server.post('/register', usernameToLowerCase, auth.doRegister);
 
   // route for login action
-  server.post('/login', auth.doLogin);
+  server.post('/login', usernameToLowerCase,  auth.doLogin);
 
   // route for logout action
   server.get('/logout', auth.logout);

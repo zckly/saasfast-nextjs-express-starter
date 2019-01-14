@@ -10,7 +10,7 @@ async function getJWK() {
 }
 
 function saveToken(token) {
-  Cookie.set('user', token);
+  Cookie.set('user', token, { expires: 21 });
 };
 
 function deleteToken() {
