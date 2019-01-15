@@ -115,8 +115,8 @@ class Dashboard extends React.Component {
       (function(that, i) {
         let x = data[i]
         items.push(
-        <Grid.Column key={x._id} >
-          <Card href={x.recent_results.length ? x.recent_results[0]['listing_link'] : ''}>
+        <Grid.Column textAlign='left' float='right' key={x._id} >
+          <Card  href={x.recent_results.length ? x.recent_results[0]['listing_link'] : ''}>
             <Card.Content>
               <Image size='mini' floated='left' src={x.recent_results.length ? x.recent_results[0].image_link : 'http://react.semantic-ui.com/images/wireframe/image.png'} />
               <Card.Header>{titleCase(x.searchQuery)}</Card.Header>
@@ -133,7 +133,7 @@ class Dashboard extends React.Component {
                     <p>
                     {moment(x.recent_results[0].found_time).format("dddd, MMMM Do, h:mm a")}
                     </p>
-                  </div>) : (<div><h3>No searches yet!</h3><br/><br/><br/><br/><br/>
+                  </div>) : (<div><h5>No items have been found yet.</h5><br/><br/><br/><br/><br/>
                 </div>)}
             </Card.Description>
             </Card.Content>
@@ -154,7 +154,7 @@ class Dashboard extends React.Component {
           <span className="button__text" id="query_button">Monitor Item</span>
         </div>
         <div className='table'>
-          <Grid stackable relaxed columns={3}>
+          <Grid stackable centered relaxed columns={3}>
             {items}  
           </Grid>
         </div>

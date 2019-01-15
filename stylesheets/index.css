@@ -86,6 +86,7 @@ body {
   height: 10vh;
   position: fixed;
   top:0;
+  z-index: 100000
 }
 .logo {
   font-family: 'Space Mono', monospace;
@@ -365,7 +366,7 @@ label[for="checkid"] {
   margin-bottom: 2vh;
 }
 .table {
-  width: 80vw;
+  width: 50%;
   margin: 0 auto;
 }
 .checkout-page {

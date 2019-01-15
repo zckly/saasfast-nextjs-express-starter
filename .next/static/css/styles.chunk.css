@@ -88,6 +88,7 @@ body {
   height: 10vh;
   position: fixed;
   top:0;
+  z-index: 100000
 }
 .logo {
   font-family: 'Space Mono', monospace;
@@ -367,7 +368,7 @@ label[for="checkid"] {
   margin-bottom: 2vh;
 }
 .table {
-  width: 80vw;
+  width: 50%;
   margin: 0 auto;
 }
 .checkout-page {
@@ -388,21 +389,16 @@ label[for="checkid"] {
   and (min-device-width: 300px) 
   and (max-device-width: 812px) 
   and (-webkit-min-device-pixel-ratio: 3) {
-  html,
-  body {
-    margin: 0;
-  }
   html {
-      overflow: scroll;
-      overflow-x: hidden;
+    overflow: scroll;
+    overflow-x: hidden;
   }
   ::-webkit-scrollbar {
       width: 0px;  /* remove scrollbar space */
       background: transparent;  /* optional: just make scrollbar invisible */
   }
-  /* optional: show position indicator in red */
-  ::-webkit-scrollbar-thumb {
-      background: #FF0000;
+  body {
+    margin: 0;
   }
 
   #app {
