@@ -19,6 +19,7 @@ var QuerySchema = new Schema({
       "found_time": Date
     } ],
     initialGrailedScrapeCompleted: {type: Boolean, default: false},
+    initialHeroineScrapeCompleted: {type: Boolean, default: false},
     initialEbayScrapeCompleted: {type: Boolean, default: false},
     initialFromJPScrapeCompleted: {type: Boolean, default: false}
 });

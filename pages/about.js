@@ -9,7 +9,7 @@ const About = ({ isLoggedIn }) => (
   <div className='home-page'>
     <div className="text-section">
       <h1 className="title text-block">
-      ❓ About
+      About
       </h1>
       <div className="text-block">
       Heatseeker is a tool to help people find pieces from almost every marketplace on the web.

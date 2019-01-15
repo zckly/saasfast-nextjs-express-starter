@@ -71,7 +71,7 @@ class Login extends React.Component {
 				  <div className='marginBottomFive'>
 				  </div>
 				  <div>
-				    <input className="input-field" onChange={this.handleChange} type="text" name="username" value={this.state.username} placeholder="Email" /> 
+				    <input className="input-field" onChange={this.handleChange} type="email" name="username" value={this.state.username} placeholder="Email" /> 
 				  </div>
 				  <div>
 				    <input className="input-field" onChange={this.handleChange} type="password" name="password" value={this.state.password} placeholder="Password"/>

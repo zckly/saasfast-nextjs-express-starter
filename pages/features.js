@@ -9,7 +9,7 @@ const Features = ({ isLoggedIn }) => (
   <div className='home-page'>
     <div className="text-section">
     	<h1 className="title text-block">
-      ⚙ Here's how it works 
+      Here's how it works 
       </h1>
       <div className="text-block">
       1. Type in something you want us to watch for
