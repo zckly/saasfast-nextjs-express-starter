@@ -3,7 +3,7 @@ import SecureTemplate from '../static/secure-template';
 import Router from 'next/router'
 import Link from 'next/link'
 import moment from 'moment'
-import { Grid, Card, Button, Image, Modal } from 'semantic-ui-react'
+import { Grid, Card, Button, Image, Modal, Divider } from 'semantic-ui-react'
 function titleCase(str) {
   return str.toLowerCase().split(' ').map(function(word) {
     return word.replace(word[0], word[0].toUpperCase());
@@ -133,7 +133,7 @@ class Dashboard extends React.Component {
                     <p>
                     {moment(x.recent_results[0].found_time).format("dddd, MMMM Do, h:mm a")}
                     </p>
-                  </div>) : (<div><h5>No items have been found yet.</h5><br/><br/><br/><br/><br/>
+                  </div>) : (<div><h5>No items have been found yet</h5><br/><br/><br/><br/><br/>
                 </div>)}
             </Card.Description>
             </Card.Content>
@@ -147,12 +147,14 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard-page">
         
-        <input className="input-field" id='newQuery' onKeyPress={this.handleKeyPress} onChange={this.handleChange} type="text" name="newQuery" value={this.state.newQuery} placeholder="Raf Simons Closer Parka" /> 
+        <input className="input-field" id='newQuery' onKeyPress={this.handleKeyPress} onChange={this.handleChange} type="text" name="newQuery" value={this.state.newQuery} placeholder='Maison Margiela Tabi' /> 
         <br />
         <div className="newQueryButton button" onClick={this.submitNewQuery}>
           <span className="button__mask" />
           <span className="button__text" id="query_button">Monitor Item</span>
         </div>
+        <Divider hidden/>
+        <h2>My Items</h2>
         <div className='table'>
           <Grid stackable centered relaxed columns={3}>
             {items}  
