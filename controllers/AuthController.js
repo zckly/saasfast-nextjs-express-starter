@@ -18,10 +18,7 @@ userController.doRegister = function(req, res, next) {
           // the 409 HTTP status code is for conflict error
           return res.status(409).json({
             success: false,
-            message: 'Check the form for errors.',
-            errors: {
-              email: 'This email is already taken.'
-            }
+            message: 'This email is already taken.',
           });
         }
 

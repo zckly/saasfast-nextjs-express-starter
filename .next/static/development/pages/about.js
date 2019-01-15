@@ -1,4 +1,4 @@
-((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
+((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/about.js"],{
 
 /***/ "./components/Header.js":
 /*!******************************!*\
@@ -46922,9 +46922,9 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./pages/index.js":
+/***/ "./pages/about.js":
 /*!************************!*\
-  !*** ./pages/index.js ***!
+  !*** ./pages/about.js ***!
   \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -46947,21 +46947,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Index = function Index(_ref) {
+var About = function About(_ref) {
   var isLoggedIn = _ref.isLoggedIn;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-page"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-section home-text"
+    className: "text-section"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "title text-block"
-  }, "A grail finder for the 21st century"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-block"
-  }, "Tired of constantly checking sites like Grailed and Yahoo Auctions for your favorite pieces?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Heatseeker is a tool to help people find pieces from almost every marketplace on the web."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-block"
-  }, "Let Heatseeker do it for you."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Whenever a new item pops up we'll send you an email with a link!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-block"
-  }, "It\u2019ll monitor the top clothing auction sites and email you as soon as your top grails get listed.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  }, "Heatseeker is in beta now, which means it's free."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-block"
+  }, "Please email me at hello@heatseeker.io if you have any questions or suggestions for the site!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-block"
+  }, "- Zack")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/signup"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "go"
@@ -46973,13 +46977,10 @@ var Index = function Index(_ref) {
     className: "button__text"
   }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "button__text button__text--bis"
-  }, "Sign Up")))));
+  }, "Go")))));
 };
 
-Index.propTypes = {
-  isLoggedIn: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool
-};
-/* harmony default export */ __webpack_exports__["default"] = (Object(_static_template__WEBPACK_IMPORTED_MODULE_5__["default"])(Index));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_static_template__WEBPACK_IMPORTED_MODULE_5__["default"])(About));
     (function (Component, route) {
       if(!Component) return
       if (false) {}
@@ -46996,7 +46997,7 @@ Index.propTypes = {
           next.router.update(r, Component)
         }
       }
-    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/")
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/about")
   
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
@@ -47436,15 +47437,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ 17:
+/***/ 15:
 /*!******************************!*\
-  !*** multi ./pages/index.js ***!
+  !*** multi ./pages/about.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__NEXT_REGISTER_PAGE('/', function() {
-module.exports = __webpack_require__(/*! ./pages/index.js */"./pages/index.js");
+__NEXT_REGISTER_PAGE('/about', function() {
+module.exports = __webpack_require__(/*! ./pages/about.js */"./pages/about.js");
 
 return { page: module.exports.default }});
 
@@ -47505,5 +47506,5 @@ module.exports = dll_e8427f5b250f425a56e7;
 
 /***/ })
 
-},[[17,"static/runtime/webpack.js","styles"]]]));;
-//# sourceMappingURL=index.js.map
+},[[15,"static/runtime/webpack.js","styles"]]]));;
+//# sourceMappingURL=about.js.map

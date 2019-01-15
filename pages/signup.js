@@ -23,7 +23,7 @@ class Signup extends React.Component {
 		//Send form data to server
 		//Copy of state
 		const stateCopy = {...this.state}
-		if (~stateCopy.username.length || ~stateCopy.password.length || ~stateCopy.v_password.length ) {
+		if (stateCopy.username.length === 0 || ~stateCopy.password.length  === 0 || ~stateCopy.v_password.length === 0 ) {
 			Swal({
 			  title: 'Darn',
 			  text: 'Please fill out all the fields',
@@ -45,7 +45,7 @@ class Signup extends React.Component {
 			.then((json) => json['success'] ? 
 					Router.push({pathname: '/thankyou'}) : 
 					Swal({
-					  title: 'Shit',
+					  title: 'Darn',
 					  text: json['message'],
 					  type: 'error',
 					  confirmButtonText: 'Cool'
