@@ -506,9 +506,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "button__text",
         id: "query_button"
-      }, "Monitor Item")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Divider"], {
-        hidden: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "My Items"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Monitor Item")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "My Items"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "table"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Grid"], {
         stackable: true,

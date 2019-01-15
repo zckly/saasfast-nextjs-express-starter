@@ -3,7 +3,7 @@ import SecureTemplate from '../static/secure-template';
 import Router from 'next/router'
 import Link from 'next/link'
 import moment from 'moment'
-import { Grid, Card, Button, Image, Modal, Divider } from 'semantic-ui-react'
+import { Grid, Card, Button, Image, Modal } from 'semantic-ui-react'
 function titleCase(str) {
   return str.toLowerCase().split(' ').map(function(word) {
     return word.replace(word[0], word[0].toUpperCase());
@@ -153,7 +153,7 @@ class Dashboard extends React.Component {
           <span className="button__mask" />
           <span className="button__text" id="query_button">Monitor Item</span>
         </div>
-        <Divider hidden/>
+        <br/>
         <h2>My Items</h2>
         <div className='table'>
           <Grid stackable centered relaxed columns={3}>
