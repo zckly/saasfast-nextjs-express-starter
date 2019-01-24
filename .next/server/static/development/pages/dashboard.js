@@ -463,9 +463,9 @@ function (_React$Component) {
           }, x.active ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Popup"], {
             trigger: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {
               inverted: true,
-              color: "red",
-              icon: "toggle off",
-              content: "Off",
+              color: "green",
+              icon: "toggle on",
+              content: "On",
               onClick: that.turnOffAlert.bind(that, x._id)
             }),
             content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {
@@ -478,9 +478,9 @@ function (_React$Component) {
           }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Popup"], {
             trigger: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {
               inverted: true,
-              color: "green",
-              icon: "toggle on",
-              content: "On",
+              color: "red",
+              icon: "toggle off",
+              content: "Off",
               onClick: that.turnOnAlert.bind(that, x._id)
             }),
             content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {

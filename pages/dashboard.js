@@ -129,14 +129,14 @@ class Dashboard extends React.Component {
               <div className='ui two buttons attached'>
                 {x.active ? (
                   <Popup
-                      trigger={<Button inverted color='red' icon='toggle off' content='Off' onClick={that.turnOffAlert.bind(that, x._id)} />}
+                      trigger={<Button inverted color='green' icon='toggle on' content='On' onClick={that.turnOffAlert.bind(that, x._id)} />}
                       content={<Button color='green' onClick={that.handleConfirmation} content='Confirm' />}
                       on='click'
                       position='top right'
                     />
                   ) : (
                   <Popup
-                      trigger={<Button inverted color='green' icon='toggle on' content='On' onClick={that.turnOnAlert.bind(that, x._id)} />}
+                      trigger={<Button inverted color='red' icon='toggle off' content='Off' onClick={that.turnOnAlert.bind(that, x._id)} />}
                       content={<Button color='green' onClick={that.handleConfirmation} content='Confirm' />}
                       on='click'
                       position='top right'
