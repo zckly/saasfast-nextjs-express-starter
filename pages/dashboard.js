@@ -3,7 +3,7 @@ import SecureTemplate from '../static/secure-template';
 import Router from 'next/router'
 import Link from 'next/link'
 import moment from 'moment'
-import { Grid, Card, Button, Image, Modal } from 'semantic-ui-react'
+import { Grid, Card, Button, Image, Popup } from 'semantic-ui-react'
 function titleCase(str) {
   return str.toLowerCase().split(' ').map(function(word) {
     return word.replace(word[0], word[0].toUpperCase());
@@ -15,18 +15,20 @@ function truncateString(str, len) {
  else
     return str;
 }
+
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       newQuery: '',
       data: [],
-      open: false
+      clickedId: '',
+      intention: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.submitNewQuery = this.submitNewQuery.bind(this)
-    this.turnOnAlert = this.turnOnAlert.bind(this)
-    this.turnOffAlert = this.turnOffAlert.bind(this)
+    // this.turnOnAlert = this.turnOnAlert.bind(this)
+    // this.turnOffAlert = this.turnOffAlert.bind(this)
 
   }
   componentDidMount() {
@@ -66,44 +68,30 @@ class Dashboard extends React.Component {
 
     }
   }
-  open = () => this.setState({ open: true })
-  close = () => this.setState({ open: false })
-  turnOnAlert (id) {
-    console.log(id)
-    fetch(origin + '/queries/activate', {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify({query_id:id, user:this.props.loggedInUser})
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data['success']) {
-        this.setState({data: data['data'], open: false})
-      } else {
-        console.log('error when activating query!')
-        this.setState({ open: false })
-      }
-    })
+  turnOnAlert = (id) => {
+    this.setState({clickedId: id, intention: 'activate'})
   }
-  turnOffAlert (id) {
-    console.log(id)
-    fetch(origin + '/queries/deactivate', {
+  turnOffAlert = (id) => {
+    this.setState({clickedId: id, intention: 'deactivate'})
+  }
+  deleteAlert = (id) => {
+    this.setState({clickedId: id, intention: 'delete'})
+  }
+  handleConfirmation = () => {
+    fetch(origin + '/queries/' + this.state.intention, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
         method: "POST",
-        body: JSON.stringify({query_id:id, user:this.props.loggedInUser})
+        body: JSON.stringify({query_id:this.state.clickedId, user:this.props.loggedInUser})
     })
     .then((response) => response.json())
     .then((data) => {
       if (data['success']) {
         this.setState({data: data['data'], open: false})
       } else {
-        console.log('error when deactivating query!')
+        console.log('error when querying ' + this.state.intention)
         this.setState({ open: false })
       }
     })
@@ -116,12 +104,12 @@ class Dashboard extends React.Component {
         let x = data[i]
         items.push(
         <Grid.Column textAlign='left' float='right' key={x._id} >
-          <Card  href={x.recent_results.length ? x.recent_results[0]['listing_link'] : ''}>
+          <Card  >
             <Card.Content>
               <Image size='mini' floated='left' src={x.recent_results.length ? x.recent_results[0].image_link : 'http://react.semantic-ui.com/images/wireframe/image.png'} />
               <Card.Header>{titleCase(x.searchQuery)}</Card.Header>
               <Card.Description>
-                <h5>{x.recent_results.length ? truncateString(x.recent_results[0]['name'], 42) : ''}</h5>
+                <Link href={x.recent_results.length ? x.recent_results[0]['listing_link'] : ''}><a><h5>{x.recent_results.length ? truncateString(x.recent_results[0]['name'], 42) : ''}</h5></a></Link>
                 {x.recent_results.length ? (
                   <div>
                     <h4>
@@ -133,11 +121,35 @@ class Dashboard extends React.Component {
                     <p>
                     {moment(x.recent_results[0].found_time).format("dddd, MMMM Do, h:mm a")}
                     </p>
-                  </div>) : (<div><h5>No items have been found yet</h5><br/><br/><br/><br/><br/>
+                  </div>) : (<div><h5>No new items have been found yet.</h5><br/><br/><br/><br/><br/>
                 </div>)}
             </Card.Description>
             </Card.Content>
-
+            <Card.Content extra>
+              <div className='ui two buttons attached'>
+                {x.active ? (
+                  <Popup
+                      trigger={<Button inverted color='red' icon='toggle off' content='Off' onClick={that.turnOffAlert.bind(that, x._id)} />}
+                      content={<Button color='green' onClick={that.handleConfirmation} content='Confirm' />}
+                      on='click'
+                      position='top right'
+                    />
+                  ) : (
+                  <Popup
+                      trigger={<Button inverted color='green' icon='toggle on' content='On' onClick={that.turnOnAlert.bind(that, x._id)} />}
+                      content={<Button color='green' onClick={that.handleConfirmation} content='Confirm' />}
+                      on='click'
+                      position='top right'
+                    />
+                )}
+                <Popup
+                    trigger={<Button color='red' icon='delete' onClick={that.deleteAlert.bind(that, x._id)} content='Delete'/>}
+                    content={<Button color='green' onClick={that.handleConfirmation} content='Confirm' />}
+                    on='click'
+                    position='top right'
+                  />
+              </div>
+            </Card.Content>
           </Card>
         </Grid.Column>
       )

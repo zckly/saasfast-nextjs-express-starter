@@ -328,27 +328,66 @@ function (_React$Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "open", function () {
-      return _this.setState({
-        open: true
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "turnOnAlert", function (id) {
+      _this.setState({
+        clickedId: id,
+        intention: 'activate'
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "close", function () {
-      return _this.setState({
-        open: false
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "turnOffAlert", function (id) {
+      _this.setState({
+        clickedId: id,
+        intention: 'deactivate'
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "deleteAlert", function (id) {
+      _this.setState({
+        clickedId: id,
+        intention: 'delete'
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleConfirmation", function () {
+      fetch(origin + '/queries/' + _this.state.intention, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({
+          query_id: _this.state.clickedId,
+          user: _this.props.loggedInUser
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (data['success']) {
+          _this.setState({
+            data: data['data'],
+            open: false
+          });
+        } else {
+          console.log('error when querying ' + _this.state.intention);
+
+          _this.setState({
+            open: false
+          });
+        }
       });
     });
 
     _this.state = {
       newQuery: '',
       data: [],
-      open: false
+      clickedId: '',
+      intention: ''
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.submitNewQuery = _this.submitNewQuery.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.turnOnAlert = _this.turnOnAlert.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.turnOffAlert = _this.turnOffAlert.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.submitNewQuery = _this.submitNewQuery.bind(_assertThisInitialized(_assertThisInitialized(_this))); // this.turnOnAlert = this.turnOnAlert.bind(this)
+    // this.turnOffAlert = this.turnOffAlert.bind(this)
+
     return _this;
   }
 
@@ -397,72 +436,6 @@ function (_React$Component) {
       } else {}
     }
   }, {
-    key: "turnOnAlert",
-    value: function turnOnAlert(id) {
-      var _this3 = this;
-
-      console.log(id);
-      fetch(origin + '/queries/activate', {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify({
-          query_id: id,
-          user: this.props.loggedInUser
-        })
-      }).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        if (data['success']) {
-          _this3.setState({
-            data: data['data'],
-            open: false
-          });
-        } else {
-          console.log('error when activating query!');
-
-          _this3.setState({
-            open: false
-          });
-        }
-      });
-    }
-  }, {
-    key: "turnOffAlert",
-    value: function turnOffAlert(id) {
-      var _this4 = this;
-
-      console.log(id);
-      fetch(origin + '/queries/deactivate', {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify({
-          query_id: id,
-          user: this.props.loggedInUser
-        })
-      }).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        if (data['success']) {
-          _this4.setState({
-            data: data['data'],
-            open: false
-          });
-        } else {
-          console.log('error when deactivating query!');
-
-          _this4.setState({
-            open: false
-          });
-        }
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$state = this.state,
@@ -477,13 +450,61 @@ function (_React$Component) {
             textAlign: "left",
             float: "right",
             key: x._id
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"], {
-            href: x.recent_results.length ? x.recent_results[0]['listing_link'] : ''
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Content, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Image"], {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Content, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Image"], {
             size: "mini",
             floated: "left",
             src: x.recent_results.length ? x.recent_results[0].image_link : 'http://react.semantic-ui.com/images/wireframe/image.png'
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Header, null, titleCase(x.searchQuery)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Description, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, x.recent_results.length ? truncateString(x.recent_results[0]['name'], 42) : ''), x.recent_results.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, ~x.recent_results[0].new_price ? '$' + x.recent_results[0].new_price : '$' + x.recent_results[0].original_price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, 'Found on ' + x.recent_results[0].source + ' at'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_5___default()(x.recent_results[0].found_time).format("dddd, MMMM Do, h:mm a"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "No items have been found yet"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)))))));
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Header, null, titleCase(x.searchQuery)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Description, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+            href: x.recent_results.length ? x.recent_results[0]['listing_link'] : ''
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, x.recent_results.length ? truncateString(x.recent_results[0]['name'], 42) : ''))), x.recent_results.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, ~x.recent_results[0].new_price ? '$' + x.recent_results[0].new_price : '$' + x.recent_results[0].original_price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, 'Found on ' + x.recent_results[0].source + ' at'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_5___default()(x.recent_results[0].found_time).format("dddd, MMMM Do, h:mm a"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "No new items have been found yet."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Card"].Content, {
+            extra: true
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "ui two buttons attached"
+          }, x.active ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Popup"], {
+            trigger: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+              inverted: true,
+              color: "red",
+              icon: "toggle off",
+              content: "Off",
+              onClick: that.turnOffAlert.bind(that, x._id)
+            }),
+            content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+              color: "green",
+              onClick: that.handleConfirmation,
+              content: "Confirm"
+            }),
+            on: "click",
+            position: "top right"
+          }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Popup"], {
+            trigger: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+              inverted: true,
+              color: "green",
+              icon: "toggle on",
+              content: "On",
+              onClick: that.turnOnAlert.bind(that, x._id)
+            }),
+            content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+              color: "green",
+              onClick: that.handleConfirmation,
+              content: "Confirm"
+            }),
+            on: "click",
+            position: "top right"
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Popup"], {
+            trigger: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+              color: "red",
+              icon: "delete",
+              onClick: that.deleteAlert.bind(that, x._id),
+              content: "Delete"
+            }),
+            content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+              color: "green",
+              onClick: that.handleConfirmation,
+              content: "Confirm"
+            }),
+            on: "click",
+            position: "top right"
+          }))))));
         })(this, i);
       }
 

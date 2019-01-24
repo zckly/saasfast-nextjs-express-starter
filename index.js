@@ -114,6 +114,16 @@ app.prepare()
       }
     })
   })
+  server.post('/queries/delete', (req, res) => {
+    const {query_id} = req.body
+    Query.findByIdAndRemove(query_id, function(err, doc) {
+      if (err) {
+        res.send({success: false, data: err})
+      } else {
+        return fetchDashboard(req, res)
+      }
+    })
+  })
 
   server.get('*', (req, res) => {
     return handle(req, res)
