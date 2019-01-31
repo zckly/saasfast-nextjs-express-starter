@@ -12,7 +12,7 @@ var LocalStrategy = require('passport-local').Strategy;
 const port = 3000
 
 //Change this string
-var connStr = 'mongodb://zlee:2128nFLV@ds227853.mlab.com:27853/heatseeker';
+var connStr = '';
 mongoose.connect(connStr, function(err) {
     if (err) throw err;
     console.log('Successfully connected to MongoDB');
