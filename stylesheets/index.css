@@ -24,6 +24,7 @@ body {
   color: #d1d1d1;
   transition: color 0.2s;
   font-size: 1.5em;
+  outline:0;
 }
 
 /* Change color on hover */
@@ -89,7 +90,6 @@ body {
   z-index: 100000
 }
 .logo {
-  font-family: 'Space Mono', monospace;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -99,7 +99,7 @@ body {
   position: fixed;
   left: 50%;
   top: 4vh;
-  margin-left: -8vh; 
+  margin-left: -6vh; 
 }
 .logo-link {
   color:black;
@@ -182,7 +182,7 @@ body {
   margin-top: 6vh;
   font-size: 35px;
 }
-.checkbox {
+.checkbox-signup {
   width: 3vw;
   height: 3vh;
   background-color: #FFFFFF;
@@ -356,9 +356,10 @@ label[for="checkid"] {
   font-size: 1em;
   text-align: center;
   margin-left: 0;
+  margin-top: 15vh;
 }
 #newQuery {
-  margin-top: 15vh;
+  
   margin-bottom: 2vh;
   font-size: .9em;
 }

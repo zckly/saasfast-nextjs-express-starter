@@ -7,7 +7,6 @@ import '../stylesheets/empty.css';
 import '../stylesheets/index.css';
 import '../stylesheets/index-mobile.css';
 import 'sweetalert2/src/sweetalert2.scss'
-import 'semantic-ui-css/semantic.min.css'
 
 export default Page => class Template extends React.Component {
   

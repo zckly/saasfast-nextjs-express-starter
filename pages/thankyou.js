@@ -7,7 +7,7 @@ class ThankYou extends React.Component {
 			<div className='home-page'>
 				<div className="text-section home-text">
 				<h1>Thanks for signing up!</h1>
-				<h4>If you'd like to start adding items to monitor, head over to your <Link href="/dashboard"><a>dashboard</a></Link></h4>
+				<h4>Head over to your <Link href="/dashboard"><a>dashboard</a></Link></h4>
 				</div>
 			</div>
 		)

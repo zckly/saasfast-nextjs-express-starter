@@ -77,19 +77,14 @@ class Signup extends React.Component {
 				    <input className="input-field" onChange={this.handleChange} type="password" name="password" value={this.state.password} placeholder="Password"/>
 				  </div>
 				  <div>
-				    <input className="input-field" onChange={this.handleChange} type="password" name="v_password" value={this.state.v_password} placeholder="Confirm password"/> 
-				  </div>
-				  <div className='checkbox-div'>
-				    <label htmlFor="checkid"  style={{wordWrap:'break-word'}}>
-			        	<input id='checkid' className="checkbox"  type="checkbox" value="test" />Only send emails about clothing alerts
-			        </label>
+				    <input className="input-field" onChange={this.handleChange} type="password" name="v_password" value={this.state.v_password} placeholder="Confirm Password"/> 
 				  </div>
 				  <div className='marginBottomFive'>
 				  </div>
 				  <div className="button" onClick={this.submitSignup}>
 		            <span className="button__mask" />
 		            <span className="button__text">Sign Up</span>
-		            <span className="button__text button__text--bis">Go</span>
+		            <span className="button__text button__text--bis">Sign Up</span>
 		          </div>
 			  </div>
 			</div>

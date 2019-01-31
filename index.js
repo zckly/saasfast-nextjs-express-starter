@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 const ObjectId = require('mongodb').ObjectID;
 const auth = require("./controllers/AuthController.js");
 const User = require('./models/user-model');
-const Query = require('./models/query-model');
-const EmailAttempts = require('./models/email-attempts-model');
 var moment = require('moment');
 
 var passport = require('passport');
@@ -56,74 +54,6 @@ app.prepare()
 
   // route for logout action
   server.get('/logout', auth.logout);
-
-  //router for creating queries
-  server.post('/new_query', (req, res) => {
-    const {newQuery, user} = req.body
-    console.log('newq', newQuery)
-    console.log('user', user)
-    //get email
-    User.findOne({_id: user})
-    .then((doc) => {
-      var newQ = new Query({
-        userID: user,
-        searchQuery: newQuery,
-        sites: ['all'],
-        userEmail: doc.email
-      })
-      newQ.save((err, doc) => {
-        if (err) res.send({success: false, data: err});
-        //invoke lambda for initial scrape
-        res.send({success: true, data: doc})
-      })
-    })
-    
-  })
-  function fetchDashboard (req, res) {
-    //1. find in Query using req.body id
-    const {user} = req.body
-    user_id = decodeURI(user).replace(/"/g, '')
-    Query.find({userID: user_id})
-    .then((docs) => {
-      res.send({success:true, data: docs})
-    })
-    .catch((err) => {
-      console.log('err', err)
-      res.send({success: false, data: err})
-    })
-  }
-  //route for getting dashboard
-  server.post('/fetch_dashboard', fetchDashboard)
-  server.post('/queries/activate', (req, res) => {
-    const {query_id} = req.body
-    Query.findByIdAndUpdate(query_id, {active: true}, {new: true}, function(err, doc) {
-      if (err) {
-        res.send({success: false, data: err})
-      } else {
-        return fetchDashboard(req, res)
-      }
-    })
-  })
-  server.post('/queries/deactivate', (req, res) => {
-    const {query_id} = req.body
-    Query.findByIdAndUpdate(query_id, {active: false}, {new: true}, function(err, doc) {
-      if (err) {
-        res.send({success: false, data: err})
-      } else {
-        return fetchDashboard(req, res)
-      }
-    })
-  })
-  server.post('/queries/delete', (req, res) => {
-    const {query_id} = req.body
-    Query.findByIdAndRemove(query_id, function(err, doc) {
-      if (err) {
-        res.send({success: false, data: err})
-      } else {
-        return fetchDashboard(req, res)
-      }
-    })
-  })
 
   server.get('*', (req, res) => {
     return handle(req, res)

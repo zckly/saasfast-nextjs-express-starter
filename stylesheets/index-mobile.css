@@ -35,6 +35,7 @@
     margin-bottom: 10px;
     color: #d1d1d1;
     transition: color 0.2s;
+    outline:0;
   }
 
   /* Change color on hover */
@@ -99,7 +100,6 @@
   }
   .logo {
   	text-align: center;
-  	font-family: 'Space Mono', monospace;
   	font-style: normal;
   	font-weight: 700;
   	line-height: normal;
@@ -186,7 +186,7 @@
     margin-top: 6vh;
     font-size: 35px;
   }
-  .checkbox {
+  .checkbox-signup {
     width: 7vw;
     height: 7vh;
     background-color: #FFFFFF;

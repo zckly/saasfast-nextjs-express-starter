@@ -1,7 +1,15 @@
 {
+  "../stylesheets/empty.css": [
+    {
+      "id": "./stylesheets/empty.css",
+      "name": "./stylesheets/empty.css",
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    }
+  ],
   "undefined": [
     {
-      "id": 10,
+      "id": 8,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
@@ -13,13 +21,7 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": 8,
-      "name": null,
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
-      "id": 12,
+      "id": 10,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
@@ -29,34 +31,12 @@
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
-    },
-    {
-      "id": 13,
-      "name": null,
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
     }
   ],
-  "semantic-ui-css/semantic.min.css": [
+  "../stylesheets/index.css": [
     {
-      "id": "./node_modules/semantic-ui-css/semantic.min.css",
-      "name": "./node_modules/semantic-ui-css/semantic.min.css",
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    }
-  ],
-  "sweetalert2/src/sweetalert2.scss": [
-    {
-      "id": "./node_modules/sweetalert2/src/sweetalert2.scss",
-      "name": "./node_modules/sweetalert2/src/sweetalert2.scss",
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    }
-  ],
-  "../stylesheets/empty.css": [
-    {
-      "id": "./stylesheets/empty.css",
-      "name": "./stylesheets/empty.css",
+      "id": "./stylesheets/index.css",
+      "name": "./stylesheets/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     }
@@ -69,10 +49,10 @@
       "publicPath": "static/chunks/styles.js"
     }
   ],
-  "../stylesheets/index.css": [
+  "sweetalert2/src/sweetalert2.scss": [
     {
-      "id": "./stylesheets/index.css",
-      "name": "./stylesheets/index.css",
+      "id": "./node_modules/sweetalert2/src/sweetalert2.scss",
+      "name": "./node_modules/sweetalert2/src/sweetalert2.scss",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     }

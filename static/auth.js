@@ -1,13 +1,6 @@
 import Cookie from 'js-cookie';
 import jwt from 'jsonwebtoken';
 import fetch from 'isomorphic-unfetch';
-import * as settings from '../settings';
-
-async function getJWK() {
-  const res = await fetch(`https://${settings.domain}/.well-known/jwks.json`);
-  const jwk = await res.json();
-  return jwk;
-}
 
 function saveToken(token) {
   Cookie.set('user', token, { expires: 21 });

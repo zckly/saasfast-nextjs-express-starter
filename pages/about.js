@@ -12,31 +12,36 @@ const About = ({ isLoggedIn }) => (
       About
       </h1>
       <div className="text-block">
-      Heatseeker is a tool to help people find pieces from almost every marketplace on the web.
-	  </div>
-	  <div className="text-block">
-	  Whenever a new item pops up we'll send you an email with a link!
-	  </div>
-	  <div className="text-block">
-	  Heatseeker is in beta now, which means it's free.
-	  </div>
-	  <div className="text-block">
-	  Please email me at hello@heatseeker.io if you have any questions or suggestions for the site!
-	  </div>
-	  <div className="text-block">
-	  - Zack
-	  </div>
+      saasfast is a starter kit for anyone who wants to get their app or service up and running.
+	    </div>
+      <div className="text-block">
+      Server-side rendered React for high performance and superb SEO.
+      </div>
+      <div className="text-block">
+      Extensible and flexible API with Node, Express, and MongoDB
+      </div>
     </div>
-    <Link href="/signup">
+    {isLoggedIn ? (
+    <Link href="/dashboard">
       <div className='go'>
-      	<div className="index-button button">
+        <div className="index-button button">
           <span className="button__mask" />
-          <span className="button__text">Sign Up</span>
-          <span className="button__text button__text--bis">Go</span>
+          <span className="button__text">Dashboard</span>
+          <span className="button__text button__text--bis">Dashboard</span>
         </div>
       </div>
     </Link>
-
+    ) : (
+    <Link href="/signup">
+      <div className='go'>
+        <div className="index-button button">
+          <span className="button__mask" />
+          <span className="button__text">Sign Up</span>
+          <span className="button__text button__text--bis">Sign Up</span>
+        </div>
+      </div>
+    </Link>
+    )}
 
   </div>
 )

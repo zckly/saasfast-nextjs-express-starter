@@ -22,7 +22,7 @@ class Header extends React.Component {
     return (
         <div className="header-component">
           <div className="logo">
-            <Link href='/'><a className='logo-link' >heatseeker</a></Link>
+            <Link href='/'><a className='logo-link' >saasfast</a></Link>
           </div>
           <div>
             <Menu noOverlay isOpen={ menuOpen } pageWrapId={ "page-wrap" } >
@@ -32,12 +32,6 @@ class Header extends React.Component {
                 <div>
                   <Link  href="/dashboard">
                     <a className="menu-item">Dashboard</a>
-                  </Link>
-                </div>
-                <br/>
-                <div>
-                  <Link  href="/features">
-                    <a className="menu-item">Features</a>
                   </Link>
                 </div>
                 <br/>
