@@ -34,7 +34,3 @@ This will install all the node packages for the application. You will now be abl
 `npm run dev`
 
 Open up a new browser window and go to http://localhost:3000. Hurray we have an app!
-
-If you have any problems installing saasfast, please read the documentation:
-
-https://usegravity.app/docs or contact us: support@usegravity.app
