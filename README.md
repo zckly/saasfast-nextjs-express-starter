@@ -1,5 +1,10 @@
-*********************
-Welcome to saasfast 🚀
+## saasfast
+
+#### Template: Free NextJS Express MongoDB Starter
+#### Client: NextJS/ReactJS
+#### Server: NextJS/ExpressJS
+#### Database: MongoDB hosted on Mlab
+#### Authentication: Local
 *********************
 
 Thank you for using saasfast! This file will help you get set up and running in a few minutes.
